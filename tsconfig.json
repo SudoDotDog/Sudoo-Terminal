@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "#canvas/*": ["canvas/*"],
+            "#listener/*": ["listener/*"],
+            "#util/*": ["util/*"],
+        },
+        "alwaysStrict": true,
+        "removeComments": true,
+        "downlevelIteration": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "target": "es5",
+        "lib": [
+            "es2016",
+            "es6"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
