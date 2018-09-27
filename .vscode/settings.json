@@ -1,7 +1,8 @@
 {
     "cSpell.words": [
         "Sudoo",
-        "WMXPY"
+        "WMXPY",
+        "fileoverview"
     ],
     "tslint.configFile": "typescript/tslint.json",
     "javascript.preferences.importModuleSpecifier": "auto",
