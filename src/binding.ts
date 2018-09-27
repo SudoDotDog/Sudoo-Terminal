@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @fileoverview Binding
+ * @description Binding
  */
 
 import * as ModuleAlias from 'module-alias';
@@ -14,6 +14,7 @@ import * as Path from 'path';
 
     ModuleAlias.addAliases({
         "#canvas": Path.join(here, 'canvas'),
+        "#declare":  Path.join(here, 'declare'),
         "#listener": Path.join(here, 'listener'),
         "#util": Path.join(here, 'util'),
     });
