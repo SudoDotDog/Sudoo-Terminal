@@ -1,7 +1,7 @@
 {
-  "name": "@sudoo/core",
+  "name": "@sudoo/terminal",
   "version": "0.0.0",
-  "description": "sudoo core",
+  "description": "sudoo terminal",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/SudoDotDog/Sudoo-Core.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "WMXPY",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SudoDotDog/Sudoo-Core/issues"
   },

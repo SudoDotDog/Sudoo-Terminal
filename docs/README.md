@@ -1,3 +1,3 @@
-# Sudoo-Core
+# Sudoo-Terminal
 
-Test
+Terminal Manager for Sudoo
