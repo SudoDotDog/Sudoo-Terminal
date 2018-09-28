@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @fileoverview Sudoo Terminal
+ * @description Sudoo Terminal
  */
 
 import { Canvas as CanvasClass } from '#canvas/index';
