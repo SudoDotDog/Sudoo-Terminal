@@ -13,3 +13,6 @@ export const Canvas = (): CanvasClass => {
     }
     throw error(ERROR_CODE.CANVAS_NOT_AVAILABLE);
 };
+
+export { ICanvas } from '#declare/canvas';
+export { CanvasClass };
