@@ -4,7 +4,7 @@
  * @description Canvas
  */
 
-import { ICanvas } from "#declare/canvas";
+import { ICanvas } from "../declare/canvas";
 
 export class Canvas implements ICanvas {
     private static _instance: Canvas | null;

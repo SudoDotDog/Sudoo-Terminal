@@ -4,10 +4,9 @@
  * @fileoverview Class
  */
 
-require('../../src/binding');
-import { Canvas } from '#canvas/index';
 import { expect } from 'chai';
 import * as Chance from 'chance';
+import { Canvas } from '../../src/canvas/index';
 import { MockWriteableStream } from '../mock/node/writeable';
 
 describe('Given Canvas common class', function (this: Mocha.Suite): void {

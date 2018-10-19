@@ -4,7 +4,7 @@
  * @fileoverview Similarity
  */
 
-import { lastElement } from "#util/string/common";
+import { lastElement } from "./common";
 
 export const similar = (baseStr: string, targetStr: string): number => {
     const base: string = baseStr.length < targetStr.length ? baseStr.toLowerCase() : targetStr.toLowerCase();

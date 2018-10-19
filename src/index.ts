@@ -3,8 +3,8 @@
  * @description Sudoo Terminal
  */
 
-import { Canvas as CanvasClass } from '#canvas/index';
-import { error, ERROR_CODE } from '#util/error';
+import { Canvas as CanvasClass } from './canvas/index';
+import { error, ERROR_CODE } from './util/error';
 
 export const Canvas = (): CanvasClass => {
     const stream: NodeJS.WriteStream = process.stdout;
@@ -14,5 +14,6 @@ export const Canvas = (): CanvasClass => {
     throw error(ERROR_CODE.CANVAS_NOT_AVAILABLE);
 };
 
-export { ICanvas } from '#declare/canvas';
+export { ICanvas } from './declare/canvas';
 export { CanvasClass };
+

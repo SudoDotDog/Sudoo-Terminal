@@ -4,10 +4,9 @@
  * @fileoverview Similarity
  */
 
-require('../../../src/binding');
-import { similar } from '#util/string/similarity';
 import { expect } from 'chai';
 import * as Chance from 'chance';
+import { similar } from '../../../src/util/string/similarity';
 
 describe('Given similarity function', function (this: Mocha.Suite): void {
     const chance: Chance.Chance = new Chance('util-string-similarity-test');

@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "baseUrl": "../src",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": [
@@ -12,12 +11,6 @@
         "moduleResolution": "node",
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "paths": {
-            "#canvas/*": ["canvas/*"],
-            "#declare/*": ["declare/*"],
-            "#listener/*": ["listener/*"],
-            "#util/*": ["util/*"],
-        },
         "sourceMap": true,
         "strict": true,
         "target": "es6"

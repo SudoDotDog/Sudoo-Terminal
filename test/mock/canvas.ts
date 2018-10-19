@@ -4,7 +4,7 @@
  * @fileoverview Class
  */
 
-import { ICanvas } from "#declare/canvas";
+import { ICanvas } from "../../src";
 
 export class MockCanvas implements ICanvas {
     private _result: string[];
