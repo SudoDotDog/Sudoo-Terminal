@@ -1,9 +1,12 @@
 {
     "cSpell.words": [
+        "Dependences",
         "Sudoo",
         "WMXPY",
         "codecov",
         "fileoverview",
+        "ifeq",
+        "setx",
         "tshook"
     ],
     "tslint.configFile": "typescript/tslint.json",
