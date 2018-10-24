@@ -3,8 +3,16 @@
  * @description Sudoo Terminal
  */
 
+import { Connor } from 'connor';
 import { Canvas as CanvasClass } from './canvas/index';
-import { error, ERROR_CODE } from './util/error';
+import { ERROR_CODE, MODULE_NAME } from './declare/error';
+
+Connor.dictionary(MODULE_NAME, {
+    1101: 'Canvas is only available in terminal',
+    9001: 'Internal error',
+});
+
+const error = Connor.getErrorCreator(MODULE_NAME);
 
 export const Canvas = (): CanvasClass => {
 

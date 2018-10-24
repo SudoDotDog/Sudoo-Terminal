@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/SudoDotDog/Sudoo-Core#readme",
   "dependencies": {
-    "connor": "^1.2.2"
+    "connor": "^2.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.6",
