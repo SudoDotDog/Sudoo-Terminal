@@ -7,6 +7,7 @@
 import { lastElement } from "./common";
 
 export const similar = (baseStr: string, targetStr: string): number => {
+
     const base: string = baseStr.length < targetStr.length ? baseStr.toLowerCase() : targetStr.toLowerCase();
     const target: string = baseStr.length < targetStr.length ? targetStr.toLowerCase() : baseStr.toLowerCase();
 

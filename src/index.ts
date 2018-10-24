@@ -7,6 +7,7 @@ import { Canvas as CanvasClass } from './canvas/index';
 import { error, ERROR_CODE } from './util/error';
 
 export const Canvas = (): CanvasClass => {
+
     const stream: NodeJS.WriteStream = process.stdout;
     if (stream.isTTY) {
         return CanvasClass.instance;

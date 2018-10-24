@@ -13,6 +13,5 @@ export const splitInput: (input: string) => string[] =
             .map((str) => str.replace(/\"/g, ''))
             .filter((s: string) => Boolean(s.trim()));
 
-export const spaces = (length: number) => {
-    return ' '.repeat(length);
-};
+export const spaces =
+    (length: number) => ' '.repeat(length);

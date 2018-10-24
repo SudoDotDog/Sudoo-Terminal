@@ -16,7 +16,9 @@
     "url": "https://github.com/SudoDotDog/Sudoo-Core/issues"
   },
   "homepage": "https://github.com/SudoDotDog/Sudoo-Core#readme",
-  "dependencies": {},
+  "dependencies": {
+    "connor": "^1.2.2"
+  },
   "devDependencies": {
     "@types/chai": "^4.1.6",
     "@types/chance": "^1.0.1",

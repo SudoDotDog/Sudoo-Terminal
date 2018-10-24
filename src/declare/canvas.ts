@@ -6,6 +6,7 @@
 
 
 export interface ICanvas {
+
     clear: (lines?: number) => ICanvas;
     cursor: (place: number, top?: boolean) => ICanvas;
     draw: (...contents: string[]) => ICanvas;
