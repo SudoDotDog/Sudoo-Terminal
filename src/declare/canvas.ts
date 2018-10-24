@@ -1,7 +1,7 @@
 /**
  * @author WMXPY
  * @namespace Declare
- * @fileoverview Common_Canvas
+ * @fileoverview Canvas
  */
 
 
