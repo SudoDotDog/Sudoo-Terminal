@@ -18,3 +18,5 @@ export interface IInput {
     meta: boolean;
     shift: boolean;
 }
+
+export type HANDLE_KEY_PRESS_FUNCTION = (str: string, key: IInput) => void;

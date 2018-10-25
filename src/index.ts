@@ -6,6 +6,7 @@
 import { Connor } from 'connor';
 import { Canvas as CanvasClass } from './canvas/index';
 import { ERROR_CODE, MODULE_NAME } from './declare/error';
+import { Imp as ImpClass } from './imp';
 
 Connor.dictionary(MODULE_NAME, {
     1101: 'Canvas is only available in terminal',
@@ -23,6 +24,15 @@ export const Canvas = (): CanvasClass => {
     throw error(ERROR_CODE.CANVAS_NOT_AVAILABLE);
 };
 
-export { ICanvas } from './declare/canvas';
-export { CanvasClass };
+export const Imp = (): ImpClass => {
 
+    const stream: NodeJS.WriteStream = process.stdout;
+    if (stream.isTTY) {
+        return ImpClass.instance;
+    }
+    throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
+};
+
+export { ICanvas } from './declare/canvas';
+export { HANDLE_KEY_PRESS_FUNCTION, IInput, SPECIAL_INPUT_NAME } from './declare/imp';
+export { CanvasClass, ImpClass };
