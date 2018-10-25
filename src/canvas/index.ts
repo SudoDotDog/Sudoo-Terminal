@@ -25,6 +25,14 @@ export class Canvas {
         this._lastDraw = '';
     }
 
+    public add(...contents: string[]): Canvas {
+
+        const draw: string = contents.join('');
+        this._lastDraw += draw;
+        this._stream.write(draw);
+        return this;
+    }
+
     public clear(lines: number = 0): Canvas {
 
         this.cursor(0);
@@ -54,6 +62,14 @@ export class Canvas {
     public draw(...contents: string[]): Canvas {
 
         const draw: string = contents.join('');
+        this._lastDraw = draw;
+        this._stream.write(draw);
+        return this;
+    }
+
+    public drawLines(lines: string[]): Canvas {
+
+        const draw: string = lines.join('\n');
         this._lastDraw = draw;
         this._stream.write(draw);
         return this;

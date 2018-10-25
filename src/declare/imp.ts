@@ -10,6 +10,12 @@ export enum SPECIAL_INPUT_NAME {
     BACKSPACE = 'backspace',
 }
 
+export enum SPECIAL_META {
+    SHIFT = 'shift',
+    CTRL = 'ctrl',
+    META = 'meta',
+}
+
 export interface IInput {
 
     sequence: string;
@@ -19,4 +25,4 @@ export interface IInput {
     shift: boolean;
 }
 
-export type HANDLE_KEY_PRESS_FUNCTION = (str: string, key: IInput) => void;
+export type HANDLE_KEY_PRESS_FUNCTION = (str: string, key: IInput) => boolean;

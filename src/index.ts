@@ -4,14 +4,16 @@
  */
 
 import { Connor } from 'connor';
-import { Canvas as CanvasClass } from './canvas/index';
 import { ERROR_CODE, MODULE_NAME } from './declare/error';
-import { Imp as ImpClass } from './imp';
 
 Connor.dictionary(MODULE_NAME, {
     1101: 'Canvas is only available in terminal',
+    1102: 'Imp is only available in terminal',
     9001: 'Internal error',
 });
+
+import { Canvas as CanvasClass } from './canvas/index';
+import { Imp as ImpClass } from './imp';
 
 const error = Connor.getErrorCreator(MODULE_NAME);
 
