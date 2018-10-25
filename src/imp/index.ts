@@ -17,31 +17,38 @@ export class Imp {
     public static get instance(): Imp {
 
         if (!this._instance) {
-            this._instance = new Imp();
+            this._instance = new Imp(process.stdin);
         }
         return this._instance;
     }
 
     private static _instance: Imp;
 
+    private _stdin: NodeJS.ReadStream;
     private _onKey: HANDLE_KEY_PRESS_FUNCTION | null;
     private _onSpecial: Map<string, HANDLE_KEY_PRESS_FUNCTION>;
     private _onMeta: Map<SPECIAL_META, HANDLE_KEY_PRESS_FUNCTION>;
 
-    public constructor() {
+    public constructor(stdin: NodeJS.ReadStream) {
+        this._stdin = stdin;
 
         this._throwIfNotTTY();
 
         this._onKey = null;
         this._onSpecial = new Map<string, HANDLE_KEY_PRESS_FUNCTION>();
         this._onMeta = new Map<SPECIAL_META, HANDLE_KEY_PRESS_FUNCTION>();
+        this._stdin.removeAllListeners();
     }
 
     public clear(): Imp {
 
+        this._throwIfNotTTY();
+
         this._onKey = null;
         this._onSpecial = new Map<string, HANDLE_KEY_PRESS_FUNCTION>();
-        process.stdin.removeAllListeners();
+        this._onMeta = new Map<SPECIAL_META, HANDLE_KEY_PRESS_FUNCTION>();
+        this._stdin.removeAllListeners();
+
         return this;
     }
 
@@ -67,16 +74,16 @@ export class Imp {
 
         this.clear();
         this._throwIfNotTTY();
-        if (!process.stdin.setRawMode) {
+        if (!this._stdin.setRawMode) {
 
             throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
 
-        Readline.emitKeypressEvents(process.stdin);
-        process.stdin.setRawMode(true);
+        Readline.emitKeypressEvents(this._stdin);
+        this._stdin.setRawMode(true);
 
         this._onKey = onKey;
-        process.stdin.on('keypress', this._handleKeyPress.bind(this));
+        this._stdin.on('keypress', this._handleKeyPress.bind(this));
         return this;
     }
 
@@ -84,12 +91,12 @@ export class Imp {
 
         this.clear();
         this._throwIfNotTTY();
-        if (!process.stdin.setRawMode) {
+        if (!this._stdin.setRawMode) {
 
             throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
 
-        if (process.stdin.isTTY) process.stdin.setRawMode(false);
+        if (this._stdin.isTTY) this._stdin.setRawMode(false);
         return this;
     }
 
@@ -101,7 +108,7 @@ export class Imp {
 
     private _throwIfNotTTY(): void {
 
-        if (!process.stdin.isTTY) {
+        if (!this._stdin.isTTY) {
             throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
         return;
