@@ -33,6 +33,5 @@ export const Imp = (): ImpClass => {
     throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
 };
 
-export { ICanvas } from './declare/canvas';
 export { HANDLE_KEY_PRESS_FUNCTION, IInput, SPECIAL_INPUT_NAME } from './declare/imp';
 export { CanvasClass, ImpClass };

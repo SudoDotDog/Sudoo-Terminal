@@ -4,29 +4,25 @@
  * @description Canvas
  */
 
-import { ICanvas } from "../declare/canvas";
-
-export class Canvas implements ICanvas {
-
-    private static _instance: Canvas | null;
-
-    private _stream: NodeJS.WritableStream;
-
-    private _lastDraw: string;
-
-    public constructor(stream?: NodeJS.WritableStream) {
-
-        this._stream = stream || process.stdout;
-        this._lastDraw = '';
-    }
+export class Canvas {
 
     public static get instance(): Canvas {
 
         if (!this._instance) {
             this._instance = new Canvas();
         }
-
         return this._instance;
+    }
+
+    private static _instance: Canvas | null;
+
+    private _stream: NodeJS.WritableStream;
+    private _lastDraw: string;
+
+    public constructor(stream?: NodeJS.WritableStream) {
+
+        this._stream = stream || process.stdout;
+        this._lastDraw = '';
     }
 
     public clear(lines: number = 0): Canvas {
