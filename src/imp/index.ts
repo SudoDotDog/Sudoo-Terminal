@@ -4,13 +4,11 @@
  * @description Imp
  */
 
-import { Connor } from 'connor';
+import { Connor, ErrorCreationFunction } from 'connor';
 import * as Readline from 'readline';
 import { Canvas } from '../canvas';
 import { ERROR_CODE, MODULE_NAME } from '../declare/error';
 import { HANDLE_KEY_PRESS_FUNCTION, IInput, SPECIAL_META } from '../declare/imp';
-
-const error = Connor.getErrorCreator(MODULE_NAME);
 
 export class Imp {
 
@@ -29,6 +27,8 @@ export class Imp {
     private _onSpecial: Map<string, HANDLE_KEY_PRESS_FUNCTION>;
     private _onMeta: Map<SPECIAL_META, HANDLE_KEY_PRESS_FUNCTION>;
 
+    private _error: ErrorCreationFunction;
+
     public constructor(stdin: NodeJS.ReadStream) {
         this._stdin = stdin;
 
@@ -38,6 +38,9 @@ export class Imp {
         this._onSpecial = new Map<string, HANDLE_KEY_PRESS_FUNCTION>();
         this._onMeta = new Map<SPECIAL_META, HANDLE_KEY_PRESS_FUNCTION>();
         this._stdin.removeAllListeners();
+
+        this._error = Connor.getErrorCreator(MODULE_NAME);
+
     }
 
     public clear(): Imp {
@@ -64,7 +67,7 @@ export class Imp {
             && meta !== SPECIAL_META.META
             && meta !== SPECIAL_META.SHIFT) {
 
-            throw error(ERROR_CODE.META_NOT_AVAILABLE);
+            throw this._error(ERROR_CODE.META_NOT_AVAILABLE);
         }
         this._onMeta.set(meta, onSpecial);
         return this;
@@ -76,7 +79,7 @@ export class Imp {
         this._throwIfNotTTY();
         if (!this._stdin.setRawMode) {
 
-            throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
+            throw this._error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
 
         Readline.emitKeypressEvents(this._stdin);
@@ -93,7 +96,7 @@ export class Imp {
         this._throwIfNotTTY();
         if (!this._stdin.setRawMode) {
 
-            throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
+            throw this._error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
 
         if (this._stdin.isTTY) this._stdin.setRawMode(false);
@@ -109,7 +112,7 @@ export class Imp {
     private _throwIfNotTTY(): void {
 
         if (!this._stdin.isTTY) {
-            throw error(ERROR_CODE.IMP_NOT_AVAILABLE);
+            throw this._error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
         return;
     }
@@ -159,7 +162,7 @@ export class Imp {
 
     private _triggerNormalKey(str: string, key: IInput): Imp {
 
-        if (!this._onKey) throw error(ERROR_CODE.INTERNAL_ERROR);
+        if (!this._onKey) throw this._error(ERROR_CODE.INTERNAL_ERROR);
         this._onKey(str, key);
         return this;
     }

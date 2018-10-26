@@ -38,12 +38,10 @@ export class Canvas {
         this.cursor(0);
         this._clearLine();
 
-        if (lines) {
-            for (let i = 0; i < lines - 1; i++) {
-                this.cursor(0, true);
-                this._clearLine();
-            }
-        }
+        if (lines) new Array(lines).fill(0).forEach(() => {
+            this.cursor(0, true);
+            this._clearLine();
+        });
 
         return this;
     }

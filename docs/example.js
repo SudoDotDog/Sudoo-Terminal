@@ -7,17 +7,17 @@ let current = '';
 imp.listen((str, key) => {
     current += key.name;
 
-    canvas.replace(current);
+    canvas.replace(current + '\n' + current + '\n');
 });
 process.stdin.setRawMode(true);
 imp.press({
     name: 'b',
     sequence: 'b',
 }).onKey('return', (str, key) => {
-    
+
     if (key.ctrl) {
         return true;
     }
     canvas.enter();
 });
-imp.onMeta('shift', (str, key)=>(console.log(key), false))
+imp.onMeta('shift', (str, key) => (console.log(key), false))
