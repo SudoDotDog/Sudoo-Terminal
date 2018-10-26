@@ -35,5 +35,6 @@ export const Imp = (): ImpClass => {
 };
 
 export { HANDLE_KEY_PRESS_FUNCTION, IInput, SPECIAL_INPUT_NAME } from './declare/imp';
+export { similar } from './util/string/similarity';
 export { CanvasClass, ImpClass };
 
