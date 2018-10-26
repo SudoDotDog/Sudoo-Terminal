@@ -3,17 +3,15 @@
  * @namespace Imp
  * @fileoverview Imp Test
  */
-import { Connor } from 'connor';
-import { MODULE_NAME } from '../../src/declare/error';
-
-Connor.instance(MODULE_NAME);
-
 import { expect } from 'chai';
 import * as Chance from 'chance';
+import { Connor } from 'connor';
 import { IInput } from '../../src';
+import { MODULE_NAME } from '../../src/declare/error';
 import { Imp } from '../../src/imp';
 import { MockReadStream } from '../mock/node/read';
 
+Connor.instance(MODULE_NAME);
 
 describe('Given a <Imp> class', function (this: Mocha.Suite): void {
 
@@ -57,14 +55,15 @@ describe('Given a <Imp> class', function (this: Mocha.Suite): void {
         const stream: MockReadStream = new MockReadStream();
         const imp: Imp = new Imp(stream.flush());
         const inputted: string[] = [];
+        const key: string = chance.word();
 
-        imp.listen((str: string, key: IInput) => {
+        imp.listen((str: string) => {
             inputted.push(str);
             return false;
         });
         imp.press({
-            sequence: 'a',
-            name: 'a',
+            sequence: key,
+            name: key,
             ctrl: false,
             shift: false,
             meta: false,

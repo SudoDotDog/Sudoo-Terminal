@@ -109,12 +109,12 @@ export class Imp {
         return this;
     }
 
-    private _throwIfNotTTY(): void {
+    private _throwIfNotTTY(): Imp {
 
         if (!this._stdin.isTTY) {
             throw this._error(ERROR_CODE.IMP_NOT_AVAILABLE);
         }
-        return;
+        return this;
     }
 
     private _handleKeyPress(str: string, key: IInput): Imp {
