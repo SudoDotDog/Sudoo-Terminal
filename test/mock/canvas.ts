@@ -4,36 +4,34 @@
  * @fileoverview Class
  */
 
-import { ICanvas } from "../../src";
-
-export class MockCanvas implements ICanvas {
+export class MockCanvas {
     private _result: string[];
 
     public constructor() {
         this._result = [];
     }
 
-    public clear(): ICanvas {
+    public clear(): MockCanvas {
         this._result.push('clear');
         return this;
     }
 
-    public cursor(): ICanvas {
+    public cursor(): MockCanvas {
         this._result.push('cursor');
         return this;
     }
 
-    public draw(...contents: string[]): ICanvas {
+    public draw(...contents: string[]): MockCanvas {
         this._result.push(...contents);
         return this;
     }
 
-    public drawObject(...contents: string[]): ICanvas {
+    public drawObject(...contents: string[]): MockCanvas {
         this._result.push(...contents);
         return this;
     }
 
-    public enter(): ICanvas {
+    public enter(): MockCanvas {
         this._result.push('enter');
         return this;
     }
@@ -42,12 +40,12 @@ export class MockCanvas implements ICanvas {
         this._result.push('exit' + (code || 9));
     }
 
-    public replace(): ICanvas {
+    public replace(): MockCanvas {
         this._result.push('replace');
         return this;
     }
 
-    public raw(...contents: string[]): ICanvas {
+    public raw(...contents: string[]): MockCanvas {
         this._result.push(...contents);
         return this;
     }
